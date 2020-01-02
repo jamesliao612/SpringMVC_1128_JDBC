@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="content">
-                    <h2 class="content-subhead">How to use this layout</h2>
+                    <h2 class="content-subhead">${queryResult}</h2>
                 </div>
             </div>
         </div>
