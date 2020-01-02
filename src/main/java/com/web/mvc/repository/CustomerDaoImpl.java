@@ -22,13 +22,38 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public List<DiscountCode> queryDiscountCode() {
-        String sql = "SELECT * FROM DISCOUNT_CODE";        
+        String sql = "SELECT * FROM DISCOUNT_CODE";
         return jdbcTemplate.query(sql, RowMap.discountCode);
     }
 
     @Override
+    public DiscountCode getDiscountCode(String code) {
+        String sql = "SELECT * FROM DISCOUNT_CODE WHERE DISCOUNT_CODE = ?";
+        DiscountCode dc = jdbcTemplate.queryForObject(sql, new Object[]{code}, RowMap.discountCode);
+        return dc;
+    }
+
+    @Override
+    public void saveDiscountCode(DiscountCode dc) {
+        String sql = "INSERT INTO DISCOUNT_CODE(DISCOUNT_CODE, RATE) VALUES(?, ?)";
+        jdbcTemplate.update(sql, dc.getDiscountCode(), dc.getRate());
+    }
+
+    @Override
+    public void updateDiscountCode(DiscountCode dc) {
+        String sql = "UPDATE DISCOUNT_CODE SET RATE = ? WHERE DISCOUNT_CODE = ?";
+        jdbcTemplate.update(sql, dc.getRate(), dc.getDiscountCode());
+    }
+
+    @Override
+    public void deletetDiscountCode(String code) {
+        String sql = "DELETE FROM DISCOUNT_CODE WHERE DISCOUNT_CODE = ?";
+        jdbcTemplate.update(sql, code);
+    }
+
+    @Override
     public List<MicroMarket> queryMicroMarket() {
-        String sql = "SELECT * FROM MICRO_MARKET";        
+        String sql = "SELECT * FROM MICRO_MARKET";
         return jdbcTemplate.query(sql, RowMap.microMarket);
     }
 
