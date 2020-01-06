@@ -56,5 +56,33 @@ public class CustomerDaoImpl implements CustomerDao {
         String sql = "SELECT * FROM MICRO_MARKET";
         return jdbcTemplate.query(sql, RowMap.microMarket);
     }
-
+    
+    @Override
+    public MicroMarket getMicroMarket(String code) {
+        String sql = "SELECT * FROM MICRO_MARKET WHERE ZIP_CODE = ?";
+        MicroMarket mm = jdbcTemplate.queryForObject(sql, new Object[]{code}, RowMap.microMarket);
+        return mm;
+    }
+    
+    @Override
+    public void saveMicroMarket(MicroMarket mm) {
+        String sql = "INSERT INTO "
+                + "MICRO_MARKET(ZIP_CODE, RADIUS, AREA_LENGTH, AREA_WIDTH) "
+                + "VALUES(?, ?, ?, ?)";
+        jdbcTemplate.update(sql, mm.getZipCode(),mm.getRadius(),mm.getAreaLength(),mm.getAreaWidth());
+    }
+    
+    @Override
+    public void updateMicroMarket(MicroMarket mm) {
+            String sql = "UPDATE MICRO_MARKET"
+                    + " SET RADIUS = ?, AREA_LENGTH = ?, AREA_WIDTH = ?"
+                    + " WHERE ZIP_CODE = ?";
+        jdbcTemplate.update(sql, mm.getRadius(),mm.getAreaLength(),mm.getAreaWidth(),mm.getZipCode());
+    }
+    
+    @Override
+    public void deleteMicroMarket(String code) {
+        String sql = "DELETE FROM MICRO_MARKET WHERE ZIP_CODE = ?";
+        jdbcTemplate.update(sql, code);
+    }
 }

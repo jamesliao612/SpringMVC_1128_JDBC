@@ -17,7 +17,7 @@ public class RowMap {
         MicroMarket mm = new MicroMarket();
         mm.setZipCode(rs.getString("ZIP_CODE"));
         mm.setRadius(rs.getDouble("RADIUS"));
-        mm.setAreaLenth(rs.getDouble("AREA_LENGTH"));
+        mm.setAreaLength(rs.getDouble("AREA_LENGTH"));
         mm.setAreaWidth(rs.getDouble("AREA_WIDTH"));
         return mm;
     };

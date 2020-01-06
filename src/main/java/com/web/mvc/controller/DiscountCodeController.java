@@ -2,7 +2,6 @@ package com.web.mvc.controller;
 
 import com.web.mvc.entity.DiscountCode;
 import com.web.mvc.repository.spec.CustomerDao;
-import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;

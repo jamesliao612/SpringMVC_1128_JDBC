@@ -1,10 +1,7 @@
-<%-- 
-    Document   : micro_market
-    Created on : 2019/12/26, 下午 08:43:17
-    Author     : study
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html>
     <head>
@@ -22,7 +19,42 @@
                 </div>
 
                 <div class="content">
-                    <h2 class="content-subhead">${queryResult}</h2>
+                    <h2 class="content-subhead">市場區塊維護</h2>
+                    <form:form modelAttribute="po" id="myform" method="post" action="${pageContext.request.contextPath}/mvc/micro_market/" class="pure-form">
+                        <fieldset>
+                            <form:input path="zipCode" placeholder="請輸入郵政碼" readonly="${readonly}"/><p/>
+                            <form:input path="radius" placeholder="請輸入範圍" />
+                            <form:input path="areaLength" placeholder="請輸入域長" />
+                            <form:input path="areaWidth" placeholder="請輸入域寬" /><p/>
+                            <input type="hidden" id="_method" name="_method" value="${_method}"/>
+                            <button type="submit" class="pure-button pure-button-primary">${_method}</button>
+                            <button type="reset" class="pure-button pure-button-primary">Reset</button>
+                        </fieldset>
+                    </form:form>
+                    <h2 class="content-subhead">市場區塊清單</h2>
+                    <table class="pure-table pure-table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ZIP_CODE</th>
+                                <th>RADIUS</th>
+                                <th>AREA_LENGTH</th>
+                                <th>AREA_WIDTH</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <c:forEach var="rs" items="${queryResult}">
+                                <tr>
+                                    <td><a href="${pageContext.request.contextPath}/mvc/micro_market/${rs.zipCode}">${rs.zipCode}</a></td>
+                                    <td>${rs.radius}</td>
+                                    <td>${rs.areaLength}</td>
+                                    <td>${rs.areaWidth}</td>
+                                    <td><button type="button" class="pure-button pure-button-primary">刪除</button></td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
