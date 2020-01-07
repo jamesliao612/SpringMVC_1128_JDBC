@@ -1,8 +1,9 @@
 package com.web.mvc.entity;
 
 public class DiscountCode {
+
     private String discountCode;
-    private double rate;
+    private Double rate;
 
     public String getDiscountCode() {
         return discountCode;
@@ -12,17 +13,21 @@ public class DiscountCode {
         this.discountCode = discountCode;
     }
 
-    public double getRate() {
+    public Double getRate() {
         return rate;
     }
 
-    public void setRate(double rate) {
+    public void setRate(Double rate) {
         this.rate = rate;
+    }
+
+    public String getLabel() {
+        return discountCode + " : " + rate;
     }
 
     @Override
     public String toString() {
         return "DiscountCode{" + "discountCode=" + discountCode + ", rate=" + rate + '}';
     }
-    
+
 }

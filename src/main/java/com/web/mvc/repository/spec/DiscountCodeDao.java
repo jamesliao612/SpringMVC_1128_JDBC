@@ -9,5 +9,5 @@ public interface DiscountCodeDao {
     DiscountCode getDiscountCode(String code);
     void saveDiscountCode(DiscountCode dc);
     void updateDiscountCode(DiscountCode dc);
-    void deletetDiscountCode(String code);
+    void deleteDiscountCode(String code);
 }

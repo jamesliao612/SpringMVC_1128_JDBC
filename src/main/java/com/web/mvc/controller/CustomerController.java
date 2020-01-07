@@ -1,6 +1,6 @@
 package com.web.mvc.controller;
 
-import com.web.mvc.entity.DiscountCode;
+import com.web.mvc.entity.Customer;
 import com.web.mvc.repository.spec.CustomerDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/discount_code")
-public class DiscountCodeController {
+@RequestMapping("/customer")
+public class CustomerController {
     
     @Autowired
     @Qualifier("customerDao")
@@ -24,37 +24,41 @@ public class DiscountCodeController {
     
     @GetMapping("/input")
     public String input(Model model){
-        model.addAttribute("po", new DiscountCode());
-        model.addAttribute("queryResult", customerDao.queryDiscountCode());
+        model.addAttribute("po", new Customer());
+        model.addAttribute("queryResult", customerDao.queryCustomer());
+        model.addAttribute("dcList", customerDao.queryDiscountCode());
+        model.addAttribute("mmList", customerDao.queryMicroMarket());
         model.addAttribute("_method", "POST");
-        return "discount_code";
+        return "customer";
     }
     
-    @GetMapping("/{code}")
-    public String get(@PathVariable("code")String code,Model model){
-        DiscountCode dc = customerDao.getDiscountCode(code);
-        model.addAttribute("po", dc);
-        model.addAttribute("queryResult", customerDao.queryDiscountCode());
+    @GetMapping("/{id}")
+    public String get(@PathVariable("id")Integer id,Model model){
+        Customer customer = customerDao.getCustomer(id);
+        model.addAttribute("po", customer);
+        model.addAttribute("queryResult", customerDao.queryCustomer());
+        model.addAttribute("dcList", customerDao.queryDiscountCode());
+        model.addAttribute("mmList", customerDao.queryMicroMarket());
         model.addAttribute("readonly", "TRUE");
         model.addAttribute("_method", "PUT");
-        return "discount_code";
+        return "customer";
     }
     
     @PostMapping("/")
-    public String save(@ModelAttribute DiscountCode dc){
-        customerDao.saveDiscountCode(dc);
+    public String save(@ModelAttribute Customer customer){
+        customerDao.saveCustomer(customer);
         return "redirect: ./input";
     }
     
     @PutMapping("/")
-    public String update(@ModelAttribute DiscountCode dc){
-        customerDao.updateDiscountCode(dc);
+    public String update(@ModelAttribute Customer customer){
+        customerDao.updateCustomer(customer);
         return "redirect: ./input";
     }
     
-    @DeleteMapping("/{code}")
-    public String delete(@PathVariable("code")String code){
-        customerDao.deleteDiscountCode(code);
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id")Integer id){
+        customerDao.deleteCustomer(id);
         return "redirect: ./input";
     }
 }

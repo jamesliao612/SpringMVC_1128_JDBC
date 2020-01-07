@@ -17,7 +17,65 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public List<Customer> queryCustomer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT * FROM CUSTOMER";
+        return jdbcTemplate.query(sql, RowMap.customers);
+    }
+
+    @Override
+    public Customer getCustomer(Integer id) {
+        String sql = "SELECT * FROM CUSTOMER WHERE CUSTOMER_ID = ?";
+        Customer customer = jdbcTemplate.queryForObject(sql, new Object[]{id}, RowMap.customers);
+        return customer;
+    }
+
+    @Override
+    public void saveCustomer(Customer customer) {
+        String sql = "INSERT INTO CUSTOMER("
+                + "CUSTOMER_ID, DISCOUNT_CODE, ZIP, NAME, "
+                + "ADDRESSLINE1, ADDRESSLINE2, CITY, STATE, "
+                + "PHONE, FAX, EMAIL, CREDIT_LIMIT) "
+                + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql,
+                customer.getCustomerId(),
+                customer.getDiscountCode(),
+                customer.getZip(),
+                customer.getName(),
+                customer.getAddressLine1(),
+                customer.getAddressLine2(),
+                customer.getCity(),
+                customer.getState(),
+                customer.getPhone(),
+                customer.getFax(),
+                customer.getEmail(),
+                customer.getCreditLimit());
+    }
+
+    @Override
+    public void updateCustomer(Customer customer) {
+        String sql = "UPDATE CUSTOMER SET "
+                + "DISCOUNT_CODE = ?, ZIP = ?, NAME = ?, "
+                + "ADDRESSLINE1 = ?, ADDRESSLINE2 = ?, CITY = ?, STATE = ?, "
+                + "PHONE = ?, FAX = ?, EMAIL = ?, CREDIT_LIMIT = ? "
+                + "WHERE CUSTOMER_ID = ?";
+        jdbcTemplate.update(sql,
+                customer.getDiscountCode(),
+                customer.getZip(),
+                customer.getName(),
+                customer.getAddressLine1(),
+                customer.getAddressLine2(),
+                customer.getCity(),
+                customer.getState(),
+                customer.getPhone(),
+                customer.getFax(),
+                customer.getEmail(),
+                customer.getCreditLimit(),
+                customer.getCustomerId());
+    }
+
+    @Override
+    public void deleteCustomer(Integer id) {
+        String sql = "DELETE FROM CUSTOMER WHERE CUSTOMER_ID = ?";
+        jdbcTemplate.update(sql, id);
     }
 
     @Override
@@ -46,7 +104,7 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
-    public void deletetDiscountCode(String code) {
+    public void deleteDiscountCode(String code) {
         String sql = "DELETE FROM DISCOUNT_CODE WHERE DISCOUNT_CODE = ?";
         jdbcTemplate.update(sql, code);
     }
@@ -56,30 +114,30 @@ public class CustomerDaoImpl implements CustomerDao {
         String sql = "SELECT * FROM MICRO_MARKET";
         return jdbcTemplate.query(sql, RowMap.microMarket);
     }
-    
+
     @Override
     public MicroMarket getMicroMarket(String code) {
         String sql = "SELECT * FROM MICRO_MARKET WHERE ZIP_CODE = ?";
         MicroMarket mm = jdbcTemplate.queryForObject(sql, new Object[]{code}, RowMap.microMarket);
         return mm;
     }
-    
+
     @Override
     public void saveMicroMarket(MicroMarket mm) {
         String sql = "INSERT INTO "
                 + "MICRO_MARKET(ZIP_CODE, RADIUS, AREA_LENGTH, AREA_WIDTH) "
                 + "VALUES(?, ?, ?, ?)";
-        jdbcTemplate.update(sql, mm.getZipCode(),mm.getRadius(),mm.getAreaLength(),mm.getAreaWidth());
+        jdbcTemplate.update(sql, mm.getZipCode(), mm.getRadius(), mm.getAreaLength(), mm.getAreaWidth());
     }
-    
+
     @Override
     public void updateMicroMarket(MicroMarket mm) {
-            String sql = "UPDATE MICRO_MARKET"
-                    + " SET RADIUS = ?, AREA_LENGTH = ?, AREA_WIDTH = ?"
-                    + " WHERE ZIP_CODE = ?";
-        jdbcTemplate.update(sql, mm.getRadius(),mm.getAreaLength(),mm.getAreaWidth(),mm.getZipCode());
+        String sql = "UPDATE MICRO_MARKET"
+                + " SET RADIUS = ?, AREA_LENGTH = ?, AREA_WIDTH = ?"
+                + " WHERE ZIP_CODE = ?";
+        jdbcTemplate.update(sql, mm.getRadius(), mm.getAreaLength(), mm.getAreaWidth(), mm.getZipCode());
     }
-    
+
     @Override
     public void deleteMicroMarket(String code) {
         String sql = "DELETE FROM MICRO_MARKET WHERE ZIP_CODE = ?";

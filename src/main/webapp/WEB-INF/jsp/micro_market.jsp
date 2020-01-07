@@ -33,9 +33,9 @@
                     <form:form modelAttribute="po" id="myform" method="post" action="${pageContext.request.contextPath}/mvc/micro_market/" class="pure-form">
                         <fieldset>
                             <form:input path="zipCode" placeholder="請輸入郵政碼" readonly="${readonly}"/><p/>
-                            <form:input path="radius" placeholder="請輸入範圍" />
-                            <form:input path="areaLength" placeholder="請輸入域長" />
-                            <form:input path="areaWidth" placeholder="請輸入域寬" /><p/>
+                            <form:input path="radius" placeholder="請輸入Radius" />
+                            <form:input path="areaLength" placeholder="請輸入AreaLength" />
+                            <form:input path="areaWidth" placeholder="請輸入AreaWidth" /><p/>
                             <input type="hidden" id="_method" name="_method" value="${_method}"/>
                             <button type="submit" class="pure-button pure-button-primary">${_method}</button>
                             <button type="reset" class="pure-button pure-button-primary">Reset</button>
