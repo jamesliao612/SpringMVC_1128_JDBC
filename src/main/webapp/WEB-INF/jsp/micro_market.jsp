@@ -6,6 +6,16 @@
 <html>
     <head>
         <%@include file="fragment/head.jspf" %>
+        <script>
+            $(document).ready(function () {
+                $(".delete").click(function () {
+                    var href = $(this).attr("href");
+                    $("#_method").val("DELETE");
+                    $("#myform").attr("action", href).submit();
+                    return  false;
+                });
+            });
+        </script>
     </head>
     <body>
         <div id="layout">
@@ -50,7 +60,7 @@
                                     <td>${rs.radius}</td>
                                     <td>${rs.areaLength}</td>
                                     <td>${rs.areaWidth}</td>
-                                    <td><button type="button" class="pure-button pure-button-primary">刪除</button></td>
+                                    <td><a href="${pageContext.request.contextPath}/mvc/micro_market/${rs.zipCode}" class="delete">刪除</a></td>
                                 </tr>
                             </c:forEach>
                         </tbody>

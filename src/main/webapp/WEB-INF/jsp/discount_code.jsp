@@ -6,6 +6,16 @@
 <html>
     <head>
         <%@include file="fragment/head.jspf" %>
+        <script>
+            $(document).ready(function () {
+                $(".delete").click(function () {
+                    var href = $(this).attr("href");
+                    $("#_method").val("DELETE");
+                    $("#myform").attr("action", href).submit();
+                    return  false;
+                });
+            });
+        </script>
     </head>
     <body>
         <div id="layout">
@@ -44,7 +54,7 @@
                                 <tr>
                                     <td><a href="${pageContext.request.contextPath}/mvc/discount_code/${rs.discountCode}">${rs.discountCode}</a></td>
                                     <td>${rs.rate}</td>
-                                    <td><button type="button" class="pure-button pure-button-primary">刪除</button></td>
+                                    <td><a href="${pageContext.request.contextPath}/mvc/discount_code/${rs.discountCode}" class="delete">刪除</a></td>
                                 </tr>
                             </c:forEach>
                         </tbody>
