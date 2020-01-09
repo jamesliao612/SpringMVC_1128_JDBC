@@ -4,8 +4,10 @@ import com.web.mvc.entity.Customer;
 import com.web.mvc.entity.DiscountCode;
 import com.web.mvc.entity.Manufacturer;
 import com.web.mvc.entity.MicroMarket;
+import com.web.mvc.entity.PUView;
 import com.web.mvc.entity.Product;
 import com.web.mvc.entity.ProductCode;
+import com.web.mvc.entity.PurchaseOrder;
 import org.springframework.jdbc.core.RowMapper;
 
 public class RowMap {
@@ -78,5 +80,37 @@ public class RowMap {
         product.setAvailable(rs.getBoolean("AVAILABLE"));
         product.setDescription(rs.getString("DESCRIPTION"));
         return product;
+    };
+    
+    static RowMapper<PurchaseOrder> pos = (rs, i) -> {
+        PurchaseOrder po = new PurchaseOrder();
+        po.setOrderNum(rs.getInt("ORDER_NUM"));
+        po.setCustomerId(rs.getInt("CUSTOMER_ID"));
+        po.setProductId(rs.getInt("PRODUCT_ID"));
+        po.setQuantity(rs.getInt("QUANTITY"));
+        po.setShippingCost(rs.getDouble("SHIPPING_COST"));
+        //若資料庫日期型態非Date型別 則需轉型
+        //利用SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        //Example po.setSalesDate(sdf.parse(rs.getDate("SALES_DATE")));
+        //同理，修改資料庫時需注意存入資料之型別一致性 save、update
+        po.setSalesDate(rs.getDate("SALES_DATE"));
+        po.setShippingDate(rs.getDate("SHIPPING_DATE"));
+        po.setFreightCompany(rs.getString("FREIGHT_COMPANY"));
+        return po;
+    };
+    
+    static RowMapper<PUView> pvs = (rs, i) -> {
+        PUView pv = new PUView();
+        pv.setOrderNum(rs.getInt("ORDER_NUM"));
+        pv.setCustomerId(rs.getInt("CUSTOMER_ID"));
+        pv.setCustomerName(rs.getString("CUSTOMER_NAME"));
+        pv.setProductId(rs.getInt("PRODUCT_ID"));
+        pv.setProductName(rs.getString("PRODUCT_NAME"));
+        pv.setProductCodeName(rs.getString("PRODUCT_CODE_NAME"));
+        pv.setQuantity(rs.getInt("QUANTITY"));
+        pv.setPurchaseCost(rs.getDouble("PURCHASE_COST"));
+        pv.setRate(rs.getDouble("RATE"));
+        pv.setSubtotal(rs.getDouble("SUBTOTAL"));
+        return pv;
     };
 }

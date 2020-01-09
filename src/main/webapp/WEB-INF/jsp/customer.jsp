@@ -38,7 +38,7 @@
                                     <table>
                                         <tr>
                                             <td valign="top" style="padding: 5px"> 
-                                                <form:input path="customerId" placeholder="請輸入客戶ID" /><p/>
+                                                <form:input path="customerId" placeholder="請輸入客戶ID" readonly="${readonly}" /><p/>
                                                 <form:select path="discountCode" 
                                                              items="${dcList}" 
                                                              itemLabel="label" 
