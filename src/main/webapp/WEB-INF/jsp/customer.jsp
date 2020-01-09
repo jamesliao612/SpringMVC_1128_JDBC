@@ -25,7 +25,7 @@
             <div id="main">
                 <div class="header">
                     <h1>Customer</h1>
-                    <h2>A subtitle for your page goes here</h2>
+                    <h2>顧客資料</h2>
                 </div>
                 <table>
                     <td valign="top">
@@ -80,18 +80,18 @@
                                     <table class="pure-table pure-table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>customerId</th>
-                                                <th>discountCode</th>
-                                                <th>zip</th>
-                                                <th>name</th>
-                                                <th>addressline1</th>
-                                                <th>addressline2</th>
-                                                <th>city</th>
-                                                <th>state</th>
-                                                <th>phone</th>
-                                                <th>fax</th>
-                                                <th>email</th>
-                                                <th>creditLimit</th>
+                                                <th>客戶ID</th>
+                                                <th>折扣碼</th>
+                                                <th>郵政碼</th>
+                                                <th>客戶名稱</th>
+                                                <th>地址之一</th>
+                                                <th>地址之二</th>
+                                                <th>城市</th>
+                                                <th>洲</th>
+                                                <th>電話</th>
+                                                <th>傳真</th>
+                                                <th>信箱</th>
+                                                <th>信用額度</th>
                                                 <th></th>
                                             </tr>
                                         </thead>

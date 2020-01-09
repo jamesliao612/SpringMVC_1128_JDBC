@@ -23,74 +23,153 @@ public class ProductDaoImpl implements ProductDao{
 
     @Override
     public Product getProduct(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT * FROM PRODUCT WHERE PRODUCT_ID = ?";
+        Product pd = jdbcTemplate.queryForObject(sql, new Object[]{id}, RowMap.products);
+        return pd;        
     }
 
     @Override
     public void saveProduct(Product p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "INSERT INTO PRODUCT("
+                + "PRODUCT_ID, MANUFACTURER_ID, "
+                + "PRODUCT_CODE, PURCHASE_COST, QUANTITY_ON_HAND, "
+                + "MARKUP, AVAILABLE, DESCRIPTION) "
+                + "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, 
+                p.getProductId(),
+                p.getManufacturerId(),
+                p.getProductCode(),
+                p.getPurchaseCost(),
+                p.getQuantityOnHand(),
+                p.getMarkup(),
+                p.getAvailable(),
+                p.getDescription());
     }
 
     @Override
     public void updateProduct(Product p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "UPDATE PRODUCT SET "
+                + "MANUFACTURER_ID = ?, PRODUCT_CODE = ?, "
+                + "PURCHASE_COST = ?, QUANTITY_ON_HAND = ?, "
+                + "MARKUP = ?, AVAILABLE = ?, DESCRIPTION = ? "
+                + "WHERE PRODUCT_ID = ?";
+        jdbcTemplate.update(sql,
+                p.getManufacturerId(),
+                p.getProductCode(),
+                p.getPurchaseCost(),
+                p.getQuantityOnHand(),
+                p.getMarkup(),
+                p.getAvailable(),
+                p.getDescription(),
+                p.getProductId());       
     }
 
     @Override
     public void deleteProduct(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "DELETE FROM PRODUCT WHERE PRODUCT_ID = ?";
+        jdbcTemplate.update(sql, id);
     }
 
     @Override
     public List<Manufacturer> queryManufacturer() {
         String sql = "SELECT * FROM MANUFACTURER";
-        return jdbcTemplate.query(sql, RowMap.mf);
+        return jdbcTemplate.query(sql, RowMap.mfs);
     }
 
     @Override
     public Manufacturer getManufacturer(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT * FROM MANUFACTURER WHERE MANUFACTURER_ID = ?";
+        Manufacturer mf = jdbcTemplate.queryForObject(sql, new Object[]{id}, RowMap.mfs);
+        return mf;
     }
 
     @Override
     public void saveManufacturer(Manufacturer mf) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "INSERT INTO MANUFACTURER("
+                + "MANUFACTURER_ID, NAME, ADDRESSLINE1, "
+                + "ADDRESSLINE2, CITY, STATE, ZIP, "
+                + "PHONE, FAX, EMAIL, REP)"
+                + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql,
+                mf.getManufacturerId(),
+                mf.getName(),
+                mf.getAddressline1(),
+                mf.getAddressline2(),
+                mf.getCity(),
+                mf.getState(),
+                mf.getZip(),
+                mf.getPhone(),
+                mf.getFax(),
+                mf.getEmail(),
+                mf.getRep());
     }
 
     @Override
     public void updateManufacturer(Manufacturer mf) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "UPDATE MANUFACTURER SET "
+                + "NAME = ?, ADDRESSLINE1 = ?, ADDRESSLINE2 = ?, "
+                + "CITY = ?, STATE = ?, ZIP = ?, "
+                + "PHONE = ?, FAX = ?, EMAIL = ?, REP = ?"
+                + "WHERE MANUFACTURER_ID = ?";
+        jdbcTemplate.update(sql,
+                mf.getName(),
+                mf.getAddressline1(),
+                mf.getAddressline2(),
+                mf.getCity(),
+                mf.getState(),
+                mf.getZip(),
+                mf.getPhone(),
+                mf.getFax(),
+                mf.getEmail(),
+                mf.getRep(),
+                mf.getManufacturerId());
     }
 
     @Override
     public void deleteManufacturer(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "DELETE FROM MANUFACTURER WHERE MANUFACTURER_ID = ?";
+        jdbcTemplate.update(sql, id);
     }
 
     @Override
     public List<ProductCode> queryProductCode() {
         String sql = "SELECT * FROM PRODUCT_CODE";
-        return jdbcTemplate.query(sql, RowMap.pc);
+        return jdbcTemplate.query(sql, RowMap.pcs);
     }
 
     @Override
     public ProductCode getProductCode(String code) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT * FROM PRODUCT_CODE WHERE PROD_CODE = ?";
+        ProductCode pc = jdbcTemplate.queryForObject(sql, new Object[]{code}, RowMap.pcs);
+        return pc;
     }
 
     @Override
     public void saveProductCode(ProductCode pc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "INSERT INTO PRODUCT_CODE("
+                + "PROD_CODE, DISCOUNT_CODE, DESCRIPTION)"
+                + "VALUES(?, ?, ?)";
+        jdbcTemplate.update(sql,
+                pc.getProdCode(),
+                pc.getDiscountCode(),
+                pc.getDescription());
     }
 
     @Override
     public void updateProductCode(ProductCode pc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "UPDATE PRODUCT_CODE SET "
+                + "DISCOUNT_CODE = ?, DESCRIPTION = ? "
+                + "WHERE PROD_CODE = ?";
+        jdbcTemplate.update(sql,
+                pc.getDiscountCode(),
+                pc.getDescription(),
+                pc.getProdCode());
     }
 
     @Override
     public void deleteProductCode(String code) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "DELETE FROM PRODUCT_CODE WHERE PROD_CODE = ?";
+        jdbcTemplate.update(sql, code);
     }
     
 }

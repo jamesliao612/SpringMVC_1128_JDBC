@@ -25,7 +25,7 @@
             <div id="main">
                 <div class="header">
                     <h1>Micro Market</h1>
-                    <h2>A subtitle for your page goes here</h2>
+                    <h2>市場區塊資料</h2>
                 </div>
 
                 <div class="content">
@@ -45,10 +45,10 @@
                     <table class="pure-table pure-table-bordered">
                         <thead>
                             <tr>
-                                <th>ZIP_CODE</th>
-                                <th>RADIUS</th>
-                                <th>AREA_LENGTH</th>
-                                <th>AREA_WIDTH</th>
+                                <th>郵政碼</th>
+                                <th>範圍</th>
+                                <th>長度</th>
+                                <th>寬度</th>
                                 <th></th>
                             </tr>
                         </thead>

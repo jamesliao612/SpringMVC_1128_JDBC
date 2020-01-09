@@ -9,7 +9,7 @@ import com.web.mvc.entity.ProductCode;
 import org.springframework.jdbc.core.RowMapper;
 
 public class RowMap {
-
+    
     static RowMapper<DiscountCode> discountCode = (rs, i) -> {
         DiscountCode dc = new DiscountCode();
         dc.setDiscountCode(rs.getString("DISCOUNT_CODE"));
@@ -43,21 +43,40 @@ public class RowMap {
         return customer;
     };
     
-    static RowMapper<Manufacturer> mf = (rs, i) -> {
+    static RowMapper<Manufacturer> mfs = (rs, i) -> {
         Manufacturer mf = new Manufacturer();
-        
+        mf.setManufacturerId(rs.getInt("MANUFACTURER_ID"));
+        mf.setName(rs.getString("NAME"));
+        mf.setAddressline1(rs.getString("ADDRESSLINE1"));
+        mf.setAddressline2(rs.getString("ADDRESSLINE2"));
+        mf.setCity(rs.getString("CITY"));
+        mf.setState(rs.getString("STATE"));
+        mf.setZip(rs.getString("ZIP"));
+        mf.setPhone(rs.getString("PHONE"));
+        mf.setFax(rs.getString("FAX"));
+        mf.setEmail(rs.getString("EMAIL"));
+        mf.setRep(rs.getString("REP"));
         return mf;
     };
     
-    static RowMapper<ProductCode> pc = (rs, i) -> {
+    static RowMapper<ProductCode> pcs = (rs, i) -> {
         ProductCode pc = new ProductCode();
-        
+        pc.setProdCode(rs.getString("PROD_CODE"));
+        pc.setDiscountCode(rs.getString("DISCOUNT_CODE"));
+        pc.setDescription(rs.getString("DESCRIPTION"));
         return pc;
     };
     
     static RowMapper<Product> products = (rs, i) -> {
-        Product Product = new Product();
-        
-        return Product;
+        Product product = new Product();
+        product.setProductId(rs.getInt("PRODUCT_ID"));
+        product.setManufacturerId(rs.getInt("MANUFACTURER_ID"));
+        product.setProductCode(rs.getString("PRODUCT_CODE"));
+        product.setPurchaseCost(rs.getDouble("PURCHASE_COST"));
+        product.setQuantityOnHand(rs.getInt("QUANTITY_ON_HAND"));
+        product.setMarkup(rs.getDouble("MARKUP"));
+        product.setAvailable(rs.getBoolean("AVAILABLE"));
+        product.setDescription(rs.getString("DESCRIPTION"));
+        return product;
     };
 }

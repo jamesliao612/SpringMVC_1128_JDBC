@@ -19,47 +19,40 @@
     </head>
     <body>
         <div id="layout">
-            <!-- Menu -->
+
             <%@include file="fragment/menu.jspf" %>
-            <!-- Body -->
+
             <div id="main">
                 <div class="header">
-                    <h1>Customer</h1>
-                    <h2>A subtitle for your page goes here</h2>
+                    <h1>Manufacturer</h1>
+                    <h2>製造商資料維護</h2>
                 </div>
                 <table>
                     <td valign="top">
                         <div class="content">
-                            <form:form modelAttribute="po" id="myform" class="pure-form" method="post" action="${pageContext.request.contextPath}/mvc/customer/">
+                            <form:form modelAttribute="po" id="myform" class="pure-form" method="post" action="${pageContext.request.contextPath}/mvc/manufacturer/">
                                 <fieldset>
                                     <legend>
-                                        <h2 class="content-subhead">Customer - 資料維護</h2>
+                                        <h2 class="content-subhead">製造商資料維護</h2>
                                     </legend>
                                     <table>
                                         <tr>
                                             <td valign="top" style="padding: 5px"> 
-                                                <form:input path="customerId" placeholder="請輸入客戶ID" /><p/>
-                                                <form:select path="discountCode" 
-                                                             items="${dcList}" 
-                                                             itemLabel="label" 
-                                                             itemValue="discountCode"/><p/>
-                                                <form:select path="zip" 
-                                                             items="${mmList}" 
-                                                             itemLabel="zipCode" 
-                                                             itemValue="zipCode"/><p/>
-                                                <form:input path="name" placeholder="請輸入客戶名稱" />
+                                                <form:input path="manufacturerId" placeholder="請輸入製造商ID" type="number" readonly="${readonly}"/><p/>
+                                                <form:input path="name" placeholder="請輸入製造商名稱" /><p/>
+                                                <form:input path="addressline1" placeholder="請輸入地址之一" /><p/>
+                                                <form:input path="addressline2" placeholder="請輸入地址之二" />
                                             </td>
                                             <td valign="top" style="padding: 5px">
-                                                <form:input path="addressLine1" placeholder="請輸入地址之一" /><p/>
-                                                <form:input path="addressLine2" placeholder="請輸入地址之二" /><p/>
-                                                <form:input path="city" placeholder="請輸入城市名" /><p/>
-                                                <form:input path="state" placeholder="請輸入洲名" />
+                                                <form:input path="city" placeholder="請輸入城市" /><p/>
+                                                <form:input path="state" placeholder="請輸入洲" /><p/>
+                                                <form:input path="zip" placeholder="請輸入郵政碼" /><p/>
                                             </td>
                                             <td valign="top" style="padding: 5px">
                                                 <form:input path="phone" placeholder="請輸入電話" /><p/>
                                                 <form:input path="fax" placeholder="請輸入傳真" /><p/>
                                                 <form:input path="email" placeholder="請輸入信箱" /><p/>
-                                                <form:input path="creditLimit" placeholder="請輸入信用額度" type="number" />
+                                                <form:input path="rep" placeholder="請輸入代理人" />
                                             </td>
                                         </tr>
                                         <tr>
@@ -75,42 +68,40 @@
                             <form class="pure-form">
                                 <fieldset>
                                     <legend>
-                                        <h2 class="content-subhead">Customer - 資料查詢</h2>
+                                        <h2 class="content-subhead">製造商資料列表</h2>
                                     </legend>
                                     <table class="pure-table pure-table-bordered">
                                         <thead>
-                                            <tr>
-                                                <th>customerId</th>
-                                                <th>discountCode</th>
-                                                <th>zip</th>
-                                                <th>name</th>
-                                                <th>addressline1</th>
-                                                <th>addressline2</th>
-                                                <th>city</th>
-                                                <th>state</th>
-                                                <th>phone</th>
-                                                <th>fax</th>
-                                                <th>email</th>
-                                                <th>creditLimit</th>
+                                            <tr>                                                
+                                                <th>製造商ID</th>
+                                                <th>製造商</th>
+                                                <th>地址之一</th>
+                                                <th>地址之二</th>
+                                                <th>城市</th>
+                                                <th>洲</th>
+                                                <th>郵政碼</th>
+                                                <th>電話</th>
+                                                <th>傳真</th>
+                                                <th>信箱</th>
+                                                <th>代理人</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <c:forEach var="rs" items="${queryResult}">
                                                 <tr>                                                    
-                                                    <td title="點此修改"><a href="${pageContext.request.contextPath}/mvc/customer/${rs.customerId}">${rs.customerId}</a></td>
-                                                    <td title="點此查詢折扣碼"><a href="${pageContext.request.contextPath}/mvc/discount_code/${rs.discountCode}">${rs.discountCode}</a></td>
-                                                    <td title="點此查詢市場區域"><a href="${pageContext.request.contextPath}/mvc/micro_market/${rs.zip}">${rs.zip}</a></td>
+                                                    <td title="點此修改"><a href="${pageContext.request.contextPath}/mvc/manufacturer/${rs.manufacturerId}">${rs.manufacturerId}</a></td>
                                                     <td>${rs.name}</td>
-                                                    <td>${rs.addressLine1}</td>
-                                                    <td>${rs.addressLine2}</td>
+                                                    <td>${rs.addressline1}</td>
+                                                    <td>${rs.addressline2}</td>
                                                     <td>${rs.city}</td>
                                                     <td>${rs.state}</td>
+                                                    <td>${rs.zip}</td>
                                                     <td>${rs.phone}</td>
                                                     <td>${rs.fax}</td>
                                                     <td>${rs.email}</td>
-                                                    <td>${rs.creditLimit}</td>
-                                                    <td title="點此刪除"><a href="${pageContext.request.contextPath}/mvc/customer/${rs.customerId}" class="delete">刪除</a></td>
+                                                    <td>${rs.rep}</td>
+                                                    <td title="點此刪除"><a href="${pageContext.request.contextPath}/mvc/manufacturer/${rs.manufacturerId}" class="delete">刪除</a></td>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
@@ -121,6 +112,6 @@
                     </td>
                 </table>
             </div>
-        </div>    
+        </div>
     </body>
 </html>

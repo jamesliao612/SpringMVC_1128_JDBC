@@ -25,7 +25,7 @@
             <div id="main">
                 <div class="header">
                     <h1>Discount Code</h1>
-                    <h2>A subtitle for your page goes here</h2>
+                    <h2>折扣碼資料</h2>
                 </div>
 
                 <div class="content">
@@ -43,8 +43,8 @@
                     <table class="pure-table pure-table-bordered">
                         <thead>
                             <tr>
-                                <th>CodeID</th>
-                                <th>Rate</th>
+                                <th>折扣碼</th>
+                                <th>折扣</th>
                                 <th></th>
                             </tr>
                         </thead>

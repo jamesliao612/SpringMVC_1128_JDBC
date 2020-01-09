@@ -19,108 +19,89 @@
     </head>
     <body>
         <div id="layout">
-            <!-- Menu -->
+
             <%@include file="fragment/menu.jspf" %>
-            <!-- Body -->
+
             <div id="main">
                 <div class="header">
-                    <h1>Customer</h1>
-                    <h2>A subtitle for your page goes here</h2>
+                    <h1>Product</h1>
+                    <h2>商品資料維護</h2>
                 </div>
+
                 <table>
                     <td valign="top">
                         <div class="content">
-                            <form:form modelAttribute="po" id="myform" class="pure-form" method="post" action="${pageContext.request.contextPath}/mvc/customer/">
+                            <form:form modelAttribute="po" id="myform" class="pure-form" method="post" action="${pageContext.request.contextPath}/mvc/product/">
                                 <fieldset>
                                     <legend>
-                                        <h2 class="content-subhead">Customer - 資料維護</h2>
+                                        <h2 class="content-subhead">商品資料維護</h2>
                                     </legend>
-                                    <table>
-                                        <tr>
-                                            <td valign="top" style="padding: 5px"> 
-                                                <form:input path="customerId" placeholder="請輸入客戶ID" /><p/>
-                                                <form:select path="discountCode" 
-                                                             items="${dcList}" 
-                                                             itemLabel="label" 
-                                                             itemValue="discountCode"/><p/>
-                                                <form:select path="zip" 
-                                                             items="${mmList}" 
-                                                             itemLabel="zipCode" 
-                                                             itemValue="zipCode"/><p/>
-                                                <form:input path="name" placeholder="請輸入客戶名稱" />
-                                            </td>
-                                            <td valign="top" style="padding: 5px">
-                                                <form:input path="addressLine1" placeholder="請輸入地址之一" /><p/>
-                                                <form:input path="addressLine2" placeholder="請輸入地址之二" /><p/>
-                                                <form:input path="city" placeholder="請輸入城市名" /><p/>
-                                                <form:input path="state" placeholder="請輸入洲名" />
-                                            </td>
-                                            <td valign="top" style="padding: 5px">
-                                                <form:input path="phone" placeholder="請輸入電話" /><p/>
-                                                <form:input path="fax" placeholder="請輸入傳真" /><p/>
-                                                <form:input path="email" placeholder="請輸入信箱" /><p/>
-                                                <form:input path="creditLimit" placeholder="請輸入信用額度" type="number" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3">
-                                                <input type="hidden" id="_method" name="_method" value="${_method}">
-                                                <button type="submit" class="pure-button pure-button-primary">${_method}</button>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                    <form:input path="productId" placeholder="商品ID" readonly="${readonly}"/><p/>
+                                    
+                                    <form:select path="manufacturerId" 
+                                                 items="${mfList}" 
+                                                 itemLabel="name" 
+                                                 itemValue="manufacturerId"/><p/>
+                                    
+                                    <form:select path="productCode" 
+                                                 items="${pcList}" 
+                                                 itemLabel="prodCode" 
+                                                 itemValue="prodCode"/><p/>
+                                    
+                                    <form:input path="purchaseCost" placeholder="請輸入單價" /><p/>
+                                    <form:input path="quantityOnHand" placeholder="請輸入庫存" /><p/>
+                                    <form:input path="markup" placeholder="請輸入調漲" /><p/>
+                                    <form:input path="available" placeholder="商品能否出貨"/><p/>
+                                    <form:input path="description" placeholder="請輸入商品描述" /><p/>
+                                    <input type="hidden" id="_method" name="_method" value="${_method}">
+                                    <button type="submit" class="pure-button pure-button-primary">${_method}</button>
                                 </fieldset>
                             </form:form>
-
+                        </div>
+                    </td>
+                    <td valign="top">
+                        <div class="content">
                             <form class="pure-form">
                                 <fieldset>
                                     <legend>
-                                        <h2 class="content-subhead">Customer - 資料查詢</h2>
+                                        <h2 class="content-subhead">商品資料列表</h2>
                                     </legend>
                                     <table class="pure-table pure-table-bordered">
                                         <thead>
-                                            <tr>
-                                                <th>customerId</th>
-                                                <th>discountCode</th>
-                                                <th>zip</th>
-                                                <th>name</th>
-                                                <th>addressline1</th>
-                                                <th>addressline2</th>
-                                                <th>city</th>
-                                                <th>state</th>
-                                                <th>phone</th>
-                                                <th>fax</th>
-                                                <th>email</th>
-                                                <th>creditLimit</th>
+                                            <tr>                                                
+                                                <th>商品ID</th>
+                                                <th>製造商ID</th>
+                                                <th>代碼</th>
+                                                <th>單價</th>
+                                                <th>庫存</th>
+                                                <th>調漲</th>
+                                                <th>可用</th>
+                                                <th>商品描述</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <c:forEach var="rs" items="${queryResult}">
                                                 <tr>                                                    
-                                                    <td title="點此修改"><a href="${pageContext.request.contextPath}/mvc/customer/${rs.customerId}">${rs.customerId}</a></td>
-                                                    <td title="點此查詢折扣碼"><a href="${pageContext.request.contextPath}/mvc/discount_code/${rs.discountCode}">${rs.discountCode}</a></td>
-                                                    <td title="點此查詢市場區域"><a href="${pageContext.request.contextPath}/mvc/micro_market/${rs.zip}">${rs.zip}</a></td>
-                                                    <td>${rs.name}</td>
-                                                    <td>${rs.addressLine1}</td>
-                                                    <td>${rs.addressLine2}</td>
-                                                    <td>${rs.city}</td>
-                                                    <td>${rs.state}</td>
-                                                    <td>${rs.phone}</td>
-                                                    <td>${rs.fax}</td>
-                                                    <td>${rs.email}</td>
-                                                    <td>${rs.creditLimit}</td>
-                                                    <td title="點此刪除"><a href="${pageContext.request.contextPath}/mvc/customer/${rs.customerId}" class="delete">刪除</a></td>
+                                                    <td title="點此修改"><a href="${pageContext.request.contextPath}/mvc/product/${rs.productId}">${rs.productId}</a></td>
+                                                    <td title="點此連結製造商頁面"><a href="${pageContext.request.contextPath}/mvc/manufacturer/${rs.manufacturerId}">${rs.manufacturerId}</a></td>
+                                                    <td title="點此連結商品代碼頁面"><a href="${pageContext.request.contextPath}/mvc/product_code/${rs.productCode}">${rs.productCode}</a></td>
+                                                    <td>${rs.purchaseCost}</td>
+                                                    <td>${rs.quantityOnHand}</td>
+                                                    <td>${rs.markup}</td>
+                                                    <td>${rs.available}</td>
+                                                    <td>${rs.description}</td>
+                                                    <td title="點此刪除"><a href="${pageContext.request.contextPath}/mvc/product/${rs.productId}" class="delete">刪除</a></td>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
                                     </table>
                                 </fieldset>
                             </form>
-                        </div>    
+                        </div>
                     </td>
                 </table>
             </div>
-        </div>    
+        </div>
     </body>
 </html>
