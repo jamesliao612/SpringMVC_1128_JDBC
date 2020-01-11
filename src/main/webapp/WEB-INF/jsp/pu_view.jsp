@@ -15,16 +15,30 @@
             <div id="main">
                 <div class="header">
                     <h1>快速查詢</h1>
-                </div>
+                </div>                
                 <table>
                     <td valign="top">
                         <div class="content">
-                            <form id="myform" class="pure-form" method="post" action="${pageContext.request.contextPath}/mvc/pu_view/">
+                            <form id="myform" class="pure-form">
                                 <fieldset>
                                     <legend>
                                         <h2 class="content-subhead">Query - 快速查詢</h2>
                                     </legend>
-                                    
+                                    <div class="content">
+                                        <form class="pure-form" method="get">
+                                            <select style="width: 150px">
+                                                <option>123</option>
+                                                <option>456</option>
+                                                <option>789</option>
+                                                <option>135</option>
+                                            </select>
+                                            <button type="submit" class="pure-button pure-button-primary" style="width: 150px">Query Selected</button>
+                                            <button type="button" class="pure-button pure-button-primary" style="width: 150px" 
+                                                    onclick="location.href = '${pageContext.request.contextPath}/mvc/pu_view/all'">
+                                                Query All
+                                            </button>
+                                        </form>
+                                    </div>
                                 </fieldset>
                             </form>
 
@@ -36,16 +50,16 @@
                                     <table class="pure-table pure-table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>訂單編號</th>
-                                                <th>客戶ID</th>
-                                                <th>客戶名稱</th>
-                                                <th>產品ID</th>
-                                                <th>產品名稱</th>
-                                                <th>產品代碼</th>
-                                                <th>數量</th>
-                                                <th>單價</th>
-                                                <th>折扣</th>
-                                                <th>總計</th>
+                                                <th valign="top" style="padding: 5px">訂單編號</th>
+                                                <th valign="top" style="padding: 5px">客戶ID</th>
+                                                <th valign="top" style="padding: 5px">客戶名稱</th>
+                                                <th valign="top" style="padding: 5px">產品ID</th>
+                                                <th valign="top" style="padding: 5px">產品名稱</th>
+                                                <th valign="top" style="padding: 5px">產品代碼</th>
+                                                <th valign="top" style="padding: 5px">數量</th>
+                                                <th valign="top" style="padding: 5px">單價</th>
+                                                <th valign="top" style="padding: 5px">折扣</th>
+                                                <th valign="top" style="padding: 5px">總計</th>
                                             </tr>
                                         </thead>
                                         <tbody>

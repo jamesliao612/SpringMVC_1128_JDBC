@@ -73,18 +73,18 @@
                                     <table class="pure-table pure-table-bordered">
                                         <thead>
                                             <tr>                                                
-                                                <th>製造商ID</th>
-                                                <th>製造商</th>
-                                                <th>地址之一</th>
-                                                <th>地址之二</th>
-                                                <th>城市</th>
-                                                <th>洲</th>
-                                                <th>郵政碼</th>
-                                                <th>電話</th>
-                                                <th>傳真</th>
-                                                <th>信箱</th>
-                                                <th>代理人</th>
-                                                <th></th>
+                                                <th valign="top" style="padding: 5px">製造商ID</th>
+                                                <th valign="top" style="padding: 5px">製造商</th>
+                                                <th valign="top" style="padding: 5px">地址之一</th>
+                                                <th valign="top" style="padding: 5px">地址之二</th>
+                                                <th valign="top" style="padding: 5px">城市</th>
+                                                <th valign="top" style="padding: 5px">洲</th>
+                                                <th valign="top" style="padding: 5px">郵政碼</th>
+                                                <th valign="top" style="padding: 5px">電話</th>
+                                                <th valign="top" style="padding: 5px">傳真</th>
+                                                <th valign="top" style="padding: 5px">信箱</th>
+                                                <th valign="top" style="padding: 5px">代理人</th>
+                                                <th valign="top" style="padding: 5px"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
