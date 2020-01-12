@@ -78,20 +78,20 @@
                                         <h2 class="content-subhead">Customer - 資料查詢</h2>
                                     </legend>
                                     <table class="pure-table pure-table-bordered">
-                                        <thead>
+                                        <thead>                                        
                                             <tr>
-                                                <th>客戶ID</th>
-                                                <th>折扣碼</th>
-                                                <th>郵政碼</th>
-                                                <th>客戶名稱</th>
-                                                <th>地址之一</th>
-                                                <th>地址之二</th>
-                                                <th>城市</th>
-                                                <th>洲</th>
-                                                <th>電話</th>
-                                                <th>傳真</th>
-                                                <th>信箱</th>
-                                                <th>信用額度</th>
+                                                <th style="padding: 2px">客戶ID</th>
+                                                <th style="padding: 2px">折扣碼</th>
+                                                <th style="padding: 2px">郵政碼</th>
+                                                <th style="padding: 2px">客戶名稱</th>
+                                                <th style="padding: 2px">地址之一</th>
+                                                <th style="padding: 2px">地址之二</th>
+                                                <th style="padding: 2px">城市</th>
+                                                <th style="padding: 2px">洲</th>
+                                                <th style="padding: 2px">電話</th>
+                                                <th style="padding: 2px">傳真</th>
+                                                <th style="padding: 2px">信箱</th>
+                                                <th style="padding: 2px">信用額度</th>
                                                 <th></th>
                                             </tr>
                                         </thead>

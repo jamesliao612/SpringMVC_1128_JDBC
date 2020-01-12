@@ -69,14 +69,14 @@
                                     <table class="pure-table pure-table-bordered">
                                         <thead>
                                             <tr>                                                
-                                                <th>商品ID</th>
-                                                <th>製造商ID</th>
-                                                <th>代碼</th>
-                                                <th>單價</th>
-                                                <th>庫存</th>
-                                                <th>調漲</th>
-                                                <th>可用</th>
-                                                <th>商品描述</th>
+                                                <th valign="top" style="padding: 5px">商品ID</th>
+                                                <th valign="top" style="padding: 5px">製造商ID</th>
+                                                <th valign="top" style="padding: 5px">代碼</th>
+                                                <th valign="top" style="padding: 5px">單價</th>
+                                                <th valign="top" style="padding: 5px">庫存</th>
+                                                <th valign="top" style="padding: 5px">調漲</th>
+                                                <th valign="top" style="padding: 5px">可用</th>
+                                                <th valign="top" style="padding: 5px">商品描述</th>
                                                 <th></th>
                                             </tr>
                                         </thead>

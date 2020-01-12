@@ -25,14 +25,13 @@
                                         <h2 class="content-subhead">Query - 快速查詢</h2>
                                     </legend>
                                     <div class="content">
-                                        <form class="pure-form" method="get">
-                                            <select style="width: 150px">
-                                                <option>123</option>
-                                                <option>456</option>
-                                                <option>789</option>
-                                                <option>135</option>
+                                        <form class="pure-form">
+                                            <select onChange="location = this.options[this.selectedIndex].value;">
+                                                <option value="#">請選擇查詢欄位</option>
+                                                <option value="${pageContext.request.contextPath}/mvc/pu_view/">Google 台灣</option>
+                                                <option value="${pageContext.request.contextPath}/mvc/pu_view/">Yahoo! 奇摩</option>
+                                                <option value="${pageContext.request.contextPath}/mvc/pu_view/">PHP.net</option>
                                             </select>
-                                            <button type="submit" class="pure-button pure-button-primary" style="width: 150px">Query Selected</button>
                                             <button type="button" class="pure-button pure-button-primary" style="width: 150px" 
                                                     onclick="location.href = '${pageContext.request.contextPath}/mvc/pu_view/all'">
                                                 Query All
@@ -50,16 +49,16 @@
                                     <table class="pure-table pure-table-bordered">
                                         <thead>
                                             <tr>
-                                                <th valign="top" style="padding: 5px">訂單編號</th>
-                                                <th valign="top" style="padding: 5px">客戶ID</th>
-                                                <th valign="top" style="padding: 5px">客戶名稱</th>
-                                                <th valign="top" style="padding: 5px">產品ID</th>
-                                                <th valign="top" style="padding: 5px">產品名稱</th>
-                                                <th valign="top" style="padding: 5px">產品代碼</th>
-                                                <th valign="top" style="padding: 5px">數量</th>
-                                                <th valign="top" style="padding: 5px">單價</th>
-                                                <th valign="top" style="padding: 5px">折扣</th>
-                                                <th valign="top" style="padding: 5px">總計</th>
+                                                <th valign="top" style="padding: 4px">訂單編號</th>
+                                                <th valign="top" style="padding: 4px">客戶ID</th>
+                                                <th valign="top" style="padding: 4px">客戶名稱</th>
+                                                <th valign="top" style="padding: 4px">產品ID</th>
+                                                <th valign="top" style="padding: 4px">產品名稱</th>
+                                                <th valign="top" style="padding: 4px">產品代碼</th>
+                                                <th valign="top" style="padding: 4px">數量</th>
+                                                <th valign="top" style="padding: 4px">單價</th>
+                                                <th valign="top" style="padding: 4px">折扣</th>
+                                                <th valign="top" style="padding: 4px">總計</th>
                                             </tr>
                                         </thead>
                                         <tbody>

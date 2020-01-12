@@ -45,10 +45,10 @@
                     <table class="pure-table pure-table-bordered">
                         <thead>
                             <tr>
-                                <th>郵政碼</th>
-                                <th>範圍</th>
-                                <th>長度</th>
-                                <th>寬度</th>
+                                <th valign="top" style="padding: 5px">郵政碼</th>
+                                <th valign="top" style="padding: 5px">範圍</th>
+                                <th valign="top" style="padding: 5px">長度</th>
+                                <th valign="top" style="padding: 5px">寬度</th>
                                 <th></th>
                             </tr>
                         </thead>

@@ -44,9 +44,9 @@
                     <table class="pure-table pure-table-bordered">
                         <thead>
                             <tr>
-                                <th>商品代碼</th>
-                                <th>折扣碼</th>
-                                <th>商品描述</th>
+                                <th valign="top" style="padding: 5px">商品代碼</th>
+                                <th valign="top" style="padding: 5px">折扣碼</th>
+                                <th valign="top" style="padding: 5px">商品描述</th>
                                 <th></th>
                             </tr>
                         </thead>
