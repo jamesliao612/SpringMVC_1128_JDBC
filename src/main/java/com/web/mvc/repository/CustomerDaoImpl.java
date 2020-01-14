@@ -6,6 +6,7 @@ import com.web.mvc.entity.MicroMarket;
 import com.web.mvc.repository.spec.CustomerDao;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +19,11 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public List<Customer> queryCustomer() {
         String sql = "SELECT * FROM CUSTOMER";
-        return jdbcTemplate.query(sql, RowMap.customers);
+        //return jdbcTemplate.query(sql, RowMap.customers);
+        //entity 與 資料庫 命名不同 或是 有商業邏輯時，需自訂RowMapper
+        
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Customer>(Customer.class));
+        //Entity 與 資料庫 欄位命名相符 數量相對 可使用 new BPRM<Entity>(Entity.class)
     }
 
     @Override

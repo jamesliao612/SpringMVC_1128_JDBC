@@ -32,7 +32,7 @@
                                                 <option value="${pageContext.request.contextPath}/mvc/pu_view/">Yahoo! 奇摩</option>
                                                 <option value="${pageContext.request.contextPath}/mvc/pu_view/">PHP.net</option>
                                             </select>
-                                            <button type="button" class="pure-button pure-button-primary" style="width: 150px" 
+                                            <button type="button" class="pure-button pure-button-primary" 
                                                     onclick="location.href = '${pageContext.request.contextPath}/mvc/pu_view/all'">
                                                 Query All
                                             </button>
